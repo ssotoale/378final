@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cupcake liner_0: -7037720876918861691
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

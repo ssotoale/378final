@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Customer : MonoBehaviour
 {
@@ -8,15 +9,71 @@ public class Customer : MonoBehaviour
     private float bobAmplitude = 0.5f;
     public CustomerSpawner spawner;
 
+    public GameObject orderReceipt;
+
     private float startY;
-    private bool isOrdering = false;
+    public bool isOrdering = false;
     private bool hasStopped = false;
+
+    private string[] cupBases = { "Vanilla", "Chocolate", "Strawberry" };
+    private string[] frostings = { "Pink" }; //TODO: Add more frosting colors?
+    private string[] toppings = { "Marshmallows", "Cherry", "Sprinkles" };
+
+    public string custCupBase;
+    public string custFrosting;
+    public List<string> custToppings = new List<string>();
 
     public float orderingPositionX = -7.43f; // The position where customers stop to order
 
     void Start()
     {
+        isOrdering = false;
         startY = transform.position.y;
+        ChooseRandomOrder();
+        orderReceipt = GameObject.Find("OrderReceipt");
+    }
+    
+    void ChooseRandomOrder()
+    {
+        custCupBase = cupBases[Random.Range(0, cupBases.Length)];
+        custFrosting = frostings[Random.Range(0, frostings.Length)];
+        custToppings.Clear(); 
+
+        int numberOfToppings = Random.Range(0, toppings.Length + 1);
+        List<string> shuffledToppings = new List<string>(toppings);
+        for (int i = 0; i < numberOfToppings; i++)
+        {
+            int index = Random.Range(0, shuffledToppings.Count);
+            custToppings.Add(shuffledToppings[index]);
+            shuffledToppings.RemoveAt(index); 
+        }
+    }
+
+    //ChatGPT code to just make SpriteRenderers comply
+    void DisableSpriteRenderers(GameObject parent)
+    {
+        SpriteRenderer parentRenderer = parent.GetComponent<SpriteRenderer>();
+        if (parentRenderer != null)
+        {
+            parentRenderer.enabled = false;
+        }
+        foreach (SpriteRenderer childRenderer in parent.GetComponentsInChildren<SpriteRenderer>())
+        {
+            childRenderer.enabled = false;
+        }
+    }
+
+    void EnableSpriteRenderers(GameObject parent)
+    {
+        SpriteRenderer parentRenderer = parent.GetComponent<SpriteRenderer>();
+        if (parentRenderer != null)
+        {
+            parentRenderer.enabled = true;
+        }
+        foreach (SpriteRenderer childRenderer in parent.GetComponentsInChildren<SpriteRenderer>())
+        {
+            childRenderer.enabled = true;
+        }
     }
 
     void Update()
@@ -78,6 +135,7 @@ public class Customer : MonoBehaviour
 
     void StartOrdering()
     {
+        EnableSpriteRenderers(orderReceipt);
         isOrdering = true;
         Debug.Log(gameObject.name + " is ordering!");
         Invoke(nameof(FinishOrder), 15f); // Simulate taking order
@@ -85,6 +143,8 @@ public class Customer : MonoBehaviour
 
     void FinishOrder()
     {
+        isOrdering = false;
+        DisableSpriteRenderers(orderReceipt);
         spawner.RemoveCustomer(gameObject);
     }
 }
