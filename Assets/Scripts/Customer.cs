@@ -17,11 +17,12 @@ public class Customer : MonoBehaviour
 
     private string[] cupBases = { "Vanilla", "Chocolate", "Strawberry" };
     private string[] frostings = { "Pink" }; //TODO: Add more frosting colors?
-    private string[] toppings = { "Marshmallows", "Cherry", "Sprinkles" };
+    private string[] toppings = { "CherryTop", "Sprinkles" };
 
     public string custCupBase;
     public string custFrosting;
     public List<string> custToppings = new List<string>();
+    public List<string> allItems = new List<string>();
 
     public float orderingPositionX = -7.43f; // The position where customers stop to order
 
@@ -40,6 +41,7 @@ public class Customer : MonoBehaviour
         custToppings.Clear(); 
 
         int numberOfToppings = Random.Range(0, toppings.Length + 1);
+        Debug.Log("Number of Toppings: " + numberOfToppings);
         List<string> shuffledToppings = new List<string>(toppings);
         for (int i = 0; i < numberOfToppings; i++)
         {
@@ -63,18 +65,24 @@ public class Customer : MonoBehaviour
         }
     }
 
-    void EnableSpriteRenderers(GameObject parent)
+    void EnableSpriteRenderers(GameObject parent, List<string> allowedNames)
     {
+        // Check and enable parent if its name is in the list
         SpriteRenderer parentRenderer = parent.GetComponent<SpriteRenderer>();
         if (parentRenderer != null)
         {
-            parentRenderer.enabled = true;
+            parentRenderer.enabled = allowedNames.Contains(parent.name);
         }
+
+        // Loop through all child SpriteRenderers
         foreach (SpriteRenderer childRenderer in parent.GetComponentsInChildren<SpriteRenderer>())
         {
-            childRenderer.enabled = true;
+            // Enable only if the child name is in the allowed list, otherwise disable it
+            childRenderer.enabled = allowedNames.Contains(childRenderer.gameObject.name);
+
         }
     }
+
 
     void Update()
     {
@@ -135,7 +143,15 @@ public class Customer : MonoBehaviour
 
     void StartOrdering()
     {
-        EnableSpriteRenderers(orderReceipt);
+        //TODO: FIX LATER
+        allItems.Clear();
+        allItems.Add("OrderReceipt");
+        allItems.Add("cupcake liner_0");
+        allItems.Add("cupcake batter_0");
+        allItems.Add(custCupBase);
+        allItems.Add(custFrosting);
+        allItems.AddRange(custToppings);
+        EnableSpriteRenderers(orderReceipt, allItems);
         isOrdering = true;
         Debug.Log(gameObject.name + " is ordering!");
         Invoke(nameof(FinishOrder), 15f); // Simulate taking order
