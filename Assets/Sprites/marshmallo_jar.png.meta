@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 21706099ed0fa4b4caf57d974d7e0504
+guid: 0344ae4588d644c99b7888538d6b2df2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -189323220448197379
-    second: chocolate batter_0
+      213: -6859678493782581394
+    second: marshmallo_jar_0
+  - first:
+      213: 3488784416742986234
+    second: marshmallo_jar_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chocolate batter_0
+      name: marshmallo_jar_0
       rect:
         serializedVersion: 2
-        x: 552
-        y: 492
-        width: 944
-        height: 716
+        x: 611
+        y: 635
+        width: 711
+        height: 974
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df4c379b8836f5df0800000000000000
-      internalID: -189323220448197379
+      spriteID: e6fd3b801c68dc0a0800000000000000
+      internalID: -6859678493782581394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallo_jar_1
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 805
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af152e151f6aa6030800000000000000
+      internalID: 3488784416742986234
       vertices: []
       indices: 
       edges: []
@@ -147,8 +172,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      chocolate batter_0: -189323220448197379
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

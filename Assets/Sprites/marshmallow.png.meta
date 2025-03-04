@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 21706099ed0fa4b4caf57d974d7e0504
+guid: cddca21260b4b4a109a3d64537aae72d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -189323220448197379
-    second: chocolate batter_0
+      213: 120947075124050619
+    second: marshmallow_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chocolate batter_0
+      name: marshmallow_0
       rect:
         serializedVersion: 2
-        x: 552
-        y: 492
-        width: 944
-        height: 716
+        x: 826
+        y: 950
+        width: 153
+        height: 169
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df4c379b8836f5df0800000000000000
-      internalID: -189323220448197379
+      spriteID: bba346959b0bda100800000000000000
+      internalID: 120947075124050619
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      chocolate batter_0: -189323220448197379
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      batter bowl vanilla_0: -100246690049580168
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chocolate frosting_0: -369145308065781729
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
