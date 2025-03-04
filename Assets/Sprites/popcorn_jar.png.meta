@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      popcorn_jar_0: 3133264235860731395
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

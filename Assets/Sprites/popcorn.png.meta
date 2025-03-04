@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      popcorn_0: 7372990775759129989
+      popcorn_1: -4331176944653904373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      marshmallo_jar_0: -6859678493782581394
+      marshmallo_jar_1: 3488784416742986234
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -363,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -372,7 +372,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cat1_0: -2359638610136418311
+      cat1_1: 1261450928073790012
+      cat1_2: 5338231431270344693
+      cat1_3: 8429930903494074323
+      cat1_4: -4677022853474928553
+      cat1_5: -8504559593559627313
+      cat1_6: 2238228788803149156
+      cat1_7: 8760808518040555034
+      cat1_8: -3914248595634877752
+      cat1_9: -8236771229509365406
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
