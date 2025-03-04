@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a64fc39eddbb5b64281fb96292014496
+guid: 329526944098ee64aaacfaa27a344a70
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7037720876918861691
-    second: cupcake liner_0
+      213: 2067638946981326389
+    second: vanilla frosting_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cupcake liner_0
+      name: vanilla frosting_0
       rect:
         serializedVersion: 2
-        x: 167
-        y: 131
-        width: 195
-        height: 108
+        x: 595
+        y: 966
+        width: 862
+        height: 656
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 58096ee562ef45e90800000000000000
-      internalID: -7037720876918861691
+      spriteID: 53ea59edaaab1bc10800000000000000
+      internalID: 2067638946981326389
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      cupcake liner_0: -7037720876918861691
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

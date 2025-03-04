@@ -116,10 +116,10 @@ TextureImporter:
       name: cherry_0
       rect:
         serializedVersion: 2
-        x: 239
-        y: 345
-        width: 40
-        height: 68
+        x: 942
+        y: 1516
+        width: 185
+        height: 282
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      cherry_0: -90375647409325229
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

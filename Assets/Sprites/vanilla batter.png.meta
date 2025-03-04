@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e46363e804390da4cb738811f386b0cb
+guid: 3dd7172fab34729499ea08f615b3c631
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7870085174463910084
-    second: frosting_0
+      213: -3058139750043906028
+    second: vanilla batter_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: frosting_0
+      name: vanilla batter_0
       rect:
         serializedVersion: 2
-        x: 177
-        y: 241
-        width: 179
-        height: 132
+        x: 552
+        y: 492
+        width: 944
+        height: 716
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4c05df7c4c8283d60800000000000000
-      internalID: 7870085174463910084
+      spriteID: 410912d991e4f85d0800000000000000
+      internalID: -3058139750043906028
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      frosting_0: 7870085174463910084
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
