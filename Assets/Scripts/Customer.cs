@@ -1,5 +1,6 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
@@ -15,30 +16,37 @@ public class Customer : MonoBehaviour
     public bool isOrdering = false;
     private bool hasStopped = false;
 
-    private string[] cupBases = { "Vanilla", "Chocolate", "Strawberry" };
-    private string[] frostings = { "Pink" }; //TODO: Add more frosting colors?
-    private string[] toppings = { "CherryTop", "Sprinkles" };
+    public SpriteRenderer spriteRend;
+    public List<Sprite> custOptions;
+
+    private string[] cupBases = { "Vanilla", "Chocolate" };
+    private string[] frostings = { "VanillaFrost", "ChocFrost" };
+    private string[] toppings = { "CherryTop", "Sprinkles", "MarshmallowsTop", "PopcornTop", "CookiesTop" };
 
     public string custCupBase;
     public string custFrosting;
     public List<string> custToppings = new List<string>();
     public List<string> allItems = new List<string>();
 
-    public float orderingPositionX = -7.43f; // The position where customers stop to order
+    public float orderingPositionX = -7.43f; // Position where customers stop to order
+    public float exitThresholdX = -12f; // Off-screen position to destroy the customer
+
+    private bool isLeaving = false;
 
     void Start()
     {
+        spriteRend.sprite = custOptions[Random.Range(0, custOptions.Count)];
         isOrdering = false;
         startY = transform.position.y;
         ChooseRandomOrder();
         orderReceipt = GameObject.Find("OrderReceipt");
     }
-    
+
     void ChooseRandomOrder()
     {
         custCupBase = cupBases[Random.Range(0, cupBases.Length)];
         custFrosting = frostings[Random.Range(0, frostings.Length)];
-        custToppings.Clear(); 
+        custToppings.Clear();
 
         int numberOfToppings = Random.Range(0, toppings.Length + 1);
         Debug.Log("Number of Toppings: " + numberOfToppings);
@@ -47,11 +55,10 @@ public class Customer : MonoBehaviour
         {
             int index = Random.Range(0, shuffledToppings.Count);
             custToppings.Add(shuffledToppings[index]);
-            shuffledToppings.RemoveAt(index); 
+            shuffledToppings.RemoveAt(index);
         }
     }
 
-    //ChatGPT code to just make SpriteRenderers comply
     void DisableSpriteRenderers(GameObject parent)
     {
         SpriteRenderer parentRenderer = parent.GetComponent<SpriteRenderer>();
@@ -67,26 +74,25 @@ public class Customer : MonoBehaviour
 
     void EnableSpriteRenderers(GameObject parent, List<string> allowedNames)
     {
-        // Check and enable parent if its name is in the list
         SpriteRenderer parentRenderer = parent.GetComponent<SpriteRenderer>();
         if (parentRenderer != null)
         {
             parentRenderer.enabled = allowedNames.Contains(parent.name);
         }
 
-        // Loop through all child SpriteRenderers
         foreach (SpriteRenderer childRenderer in parent.GetComponentsInChildren<SpriteRenderer>())
         {
-            // Enable only if the child name is in the allowed list, otherwise disable it
             childRenderer.enabled = allowedNames.Contains(childRenderer.gameObject.name);
-
         }
     }
 
-
     void Update()
     {
-        if (!isOrdering)
+        if (isLeaving)
+        {
+            MoveLeft(); // Continue moving left to exit
+        }
+        else if (!isOrdering)
         {
             if (ShouldMove())
             {
@@ -96,16 +102,15 @@ public class Customer : MonoBehaviour
             {
                 hasStopped = true; // Customer is now waiting
             }
-
-            // Bobbing effect
-            float bobbing = Mathf.Sin(Time.time * bobFrequency) * bobAmplitude;
-            transform.position = new Vector3(transform.position.x, startY + bobbing, transform.position.z);
         }
+
+        // Bobbing effect (active even when leaving)
+        float bobbing = Mathf.Sin(Time.time * bobFrequency) * bobAmplitude;
+        transform.position = new Vector3(transform.position.x, startY + bobbing, transform.position.z);
     }
 
     bool ShouldMove()
     {
-        // If customer reaches the ordering position, they should stop and order
         if (transform.position.x <= orderingPositionX)
         {
             if (spawner.customers.Count > 0 && spawner.customers[0] == gameObject)
@@ -115,13 +120,11 @@ public class Customer : MonoBehaviour
             return false; // Stop moving
         }
 
-        // If this is the first customer, keep moving until ordering position
         if (spawner.customers.Count == 0 || spawner.customers[0] == gameObject)
         {
             return true;
         }
 
-        // If there is a customer in front, stop if too close
         int index = spawner.customers.IndexOf(gameObject);
         if (index > 0)
         {
@@ -143,24 +146,34 @@ public class Customer : MonoBehaviour
 
     void StartOrdering()
     {
-        //TODO: FIX LATER
         allItems.Clear();
         allItems.Add("OrderReceipt");
-        allItems.Add("cupcake liner_0");
-        allItems.Add("cupcake batter_0");
         allItems.Add(custCupBase);
         allItems.Add(custFrosting);
         allItems.AddRange(custToppings);
         EnableSpriteRenderers(orderReceipt, allItems);
         isOrdering = true;
         Debug.Log(gameObject.name + " is ordering!");
-        Invoke(nameof(FinishOrder), 15f); // Simulate taking order
     }
 
-    void FinishOrder()
+    public void FinishOrder()
     {
         isOrdering = false;
         DisableSpriteRenderers(orderReceipt);
+        StartCoroutine(ExitAndDestroy());
+    }
+
+    private IEnumerator ExitAndDestroy()
+    {
+        isLeaving = true;
+
+        while (transform.position.x > exitThresholdX)
+        {
+            MoveLeft();
+            yield return null; // Wait for next frame
+        }
+
         spawner.RemoveCustomer(gameObject);
+        Destroy(gameObject);
     }
 }

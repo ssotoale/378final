@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: ce6c633e98f244c35902c617267ad999
+guid: 89ba490ad016c31428ad941e21834701
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7372990775759129989
-    second: popcorn_0
-  - first:
-      213: -4331176944653904373
-    second: popcorn_1
+      213: 2864342440962223611
+    second: customer1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: popcorn_0
+      name: customer1_0
       rect:
         serializedVersion: 2
-        x: 781
-        y: 1203
-        width: 130
-        height: 83
+        x: 0
+        y: 3
+        width: 561
+        height: 758
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 58dca59fb00225660800000000000000
-      internalID: 7372990775759129989
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: popcorn_1
-      rect:
-        serializedVersion: 2
-        x: 904
-        y: 1227
-        width: 116
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b06da82348194e3c0800000000000000
-      internalID: -4331176944653904373
+      spriteID: bfde0ac264030c720800000000000000
+      internalID: 2864342440962223611
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -172,9 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      popcorn_0: 7372990775759129989
-      popcorn_1: -4331176944653904373
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

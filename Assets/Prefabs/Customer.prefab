@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 6909471589630942552}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.46, y: 1.79, z: 0}
-  m_LocalScale: {x: 1.45, y: 1.45, z: 0}
+  m_LocalPosition: {x: 11.03, y: -5.86, z: 0}
+  m_LocalScale: {x: 0.484919, y: 0.484919, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5338231431270344693, guid: e1b7ed9141254405db520061eb413045, type: 3}
+  m_Sprite: {fileID: 2864342440962223611, guid: 89ba490ad016c31428ad941e21834701, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,12 +114,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  stopDistance: 5
+  stopDistance: 3
   spawner: {fileID: 0}
   orderReceipt: {fileID: 0}
   isOrdering: 0
+  spriteRend: {fileID: 5336266322561109046}
+  custOptions:
+  - {fileID: 2864342440962223611, guid: 89ba490ad016c31428ad941e21834701, type: 3}
+  - {fileID: 608960244248822192, guid: f374df2f92090a14cb249038b8e3ebf9, type: 3}
+  - {fileID: 3597786878038017252, guid: 14c45743bbb51e342b53a735f6810d36, type: 3}
   custCupBase: 
   custFrosting: 
   custToppings: []
   allItems: []
   orderingPositionX: -7.43
+  exitThresholdX: -12

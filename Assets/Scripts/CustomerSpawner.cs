@@ -42,15 +42,9 @@ public class CustomerSpawner : MonoBehaviour
 
     bool ShouldPauseSpawning()
     {
-        if (customers.Count > 0)
+        if (customers.Count > 7)
         {
-            GameObject firstCustomer = customers[0];
-
-            // Stop spawning if the first customer is still ordering
-            if (firstCustomer.transform.position.x <= orderingPositionX)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }

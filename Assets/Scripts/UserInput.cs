@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class UserInput : MonoBehaviour
 {
     public GameObject textWarning;
     public CustomerSpawner spawner; 
-    private bool canClick = false;
+    private bool canClick = true;
 
     public GameObject[] cupBases;
     public GameObject[] toppings;
@@ -18,14 +19,18 @@ public class UserInput : MonoBehaviour
     public string chosenCupBase = "";
     public string chosenFrosting = "";
     public List<string> chosenToppings = new List<string>();
+    public GameObject x;
 
     void Start()
     {
+        foreach (Transform child in spawnParent)
+        {
+            child.gameObject.SetActive(false);
+        }
     }
 
     void Update()
     {
-        CheckIfCustomerIsOrdering();
         if (canClick && Input.GetMouseButtonDown(0))
         {
             string clickedObject = DetectClick();
@@ -48,7 +53,7 @@ public class UserInput : MonoBehaviour
             }
             Debug.Log("Clicked Object is: " + clickedObject);
             // Toppings
-            if (clickedObject == "CherryTop" || clickedObject == "Sprinkles")
+            if (clickedObject == "CherryTop" || clickedObject == "Sprinkles" || clickedObject == "CookiesTop" || clickedObject == "MarshmallowsTop" || clickedObject == "PopcornTop")
             {
                 if (!chosenToppings.Contains(clickedObject))
                 {
@@ -56,7 +61,7 @@ public class UserInput : MonoBehaviour
                     SpawnCupcakeItem(clickedObject, toppings);
                 }
             }
-            if (clickedObject == "Pink")
+            if (clickedObject == "VanillaFrost" || clickedObject == "ChocFrost")
             {
                 if (chosenFrosting == "")
                 {
@@ -73,15 +78,12 @@ public class UserInput : MonoBehaviour
 
     void SpawnCupcakeItem(string clicked, GameObject[] category)
     {
-        foreach (GameObject prefab in category)
+        foreach (GameObject obj in category)
         {
-            if (prefab.name == clicked) // Match prefab name to clicked object name
+            if (obj.name == clicked) // Match prefab name to clicked object name
             {
-                GameObject newObject = Instantiate(prefab, spawnParent.position, Quaternion.identity);
-                newObject.transform.SetParent(spawnParent); // Set as a child
-                newObject.transform.localPosition = Vector3.zero; // Reset position relative to parent
-
-                Debug.Log("Spawned: " + newObject.name);
+                obj.SetActive(true);
+                Debug.Log("Spawned: " + obj.name);
                 return;
             }
         }
@@ -90,17 +92,38 @@ public class UserInput : MonoBehaviour
 
     void CheckOrder()
     {
-
+        // Check order of first customer
+        Customer customer = spawner.customers[0].GetComponent<Customer>();
+        bool areEqual = customer.custToppings.OrderBy(x => x).SequenceEqual(chosenToppings.OrderBy(x => x));
+        if (customer.custCupBase == chosenCupBase && customer.custFrosting == chosenFrosting && areEqual)
+        {
+            customer.FinishOrder();
+        }
+        else
+        {
+            if (customer.isOrdering)
+            {
+                x.SetActive(true);
+                Invoke("TurnOff", 2f);
+                Debug.Log("You messed up!");
+            }
+        }
+        ResetOrder();
     }
 
-    void ResetOrder()
+    void TurnOff()
+    {
+        x.SetActive(false);
+    }
+
+    public void ResetOrder()
     {
         chosenCupBase = "";
         chosenFrosting = "";
         chosenToppings.Clear();
         foreach (Transform child in spawnParent)
         {
-            Destroy(child.gameObject); 
+            child.gameObject.SetActive(false);
         }
         Debug.Log("Order has been reset. All objects removed.");
     }
@@ -117,23 +140,5 @@ public class UserInput : MonoBehaviour
             return hit.collider.gameObject.name;
         }
         return "";
-    }
-
-    void CheckIfCustomerIsOrdering()
-    {
-        if (spawner != null && spawner.customers.Count > 0)
-        {
-            Customer firstCustomer = spawner.customers[0].GetComponent<Customer>();
-            if (firstCustomer != null && firstCustomer.isOrdering == true) 
-            {
-                canClick = true;
-                if (textWarning != null)
-                    textWarning.SetActive(false); 
-                return;
-            }
-        }
-        canClick = false;
-        if (textWarning != null)
-            textWarning.SetActive(true);
     }
 }
