@@ -97,7 +97,7 @@ public class UserInput : MonoBehaviour
         bool areEqual = customer.custToppings.OrderBy(x => x).SequenceEqual(chosenToppings.OrderBy(x => x));
         if (customer.custCupBase == chosenCupBase && customer.custFrosting == chosenFrosting && areEqual)
         {
-            customer.FinishOrder();
+            customer.FinishOrder(chosenCupBase, chosenFrosting, chosenToppings);
         }
         else
         {
