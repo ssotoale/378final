@@ -7,7 +7,7 @@ public class StartButton : MonoBehaviour
     // load in levels
     private void OnMouseDown()
     {
-        SceneManager.LoadScene("Story"); 
+        SceneManager.LoadScene("Gameplay"); 
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

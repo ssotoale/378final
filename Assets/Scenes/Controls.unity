@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 637244192}
   - component: {fileID: 637244191}
   - component: {fileID: 637244193}
+  - component: {fileID: 637244194}
   m_Layer: 0
   m_Name: HomeButton
   m_TagString: Untagged
@@ -468,6 +469,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 8.19, y: 3.99}
   m_EdgeRadius: 0
+--- !u!114 &637244194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637244190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a167b090fe8264fa59f1b0fc3d44a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1221148152
 GameObject:
   m_ObjectHideFlags: 0
