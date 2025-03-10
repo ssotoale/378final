@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e0cc7b0cc8a2e444f96ab199bf7e4881
+guid: 50fd30a078cf47f45baf2e18ea07e768
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -123,9 +123,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 352
-        y: 1251
-        width: 191
-        height: 286
+        y: 1248
+        width: 189
+        height: 289
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +144,10 @@ TextureImporter:
       name: title card_1
       rect:
         serializedVersion: 2
-        x: 607
-        y: 1204
-        width: 475
-        height: 328
+        x: 599
+        y: 1193
+        width: 473
+        height: 335
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +166,10 @@ TextureImporter:
       name: title card_2
       rect:
         serializedVersion: 2
-        x: 1109
-        y: 1253
-        width: 596
-        height: 276
+        x: 1111
+        y: 1240
+        width: 597
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
