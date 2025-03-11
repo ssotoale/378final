@@ -21,6 +21,10 @@ public class UserInput : MonoBehaviour
     public List<string> chosenToppings = new List<string>();
     public GameObject x;
 
+    // Audio when on click
+    public AudioSource audioSource; // Drag and drop the audio source in the inspector
+    public AudioClip clickSound; // Drag and drop the click sound in the inspector
+
     void Start()
     {
         foreach (Transform child in spawnParent)
@@ -69,6 +73,8 @@ public class UserInput : MonoBehaviour
                     SpawnCupcakeItem(clickedObject, frostings);
                 }
             }
+
+            PlayClickSound(); // Play the click sound
         }
         else if (Input.GetMouseButtonDown(0))
         {
@@ -140,5 +146,13 @@ public class UserInput : MonoBehaviour
             return hit.collider.gameObject.name;
         }
         return "";
+    }
+
+    void PlayClickSound() // Add this method
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 }
