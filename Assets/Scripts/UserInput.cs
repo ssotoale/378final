@@ -72,6 +72,8 @@ public class UserInput : MonoBehaviour
                     SpawnCupcakeItem(clickedObject, frostings);
                 }
             }
+
+            PlayClickSound(); // Play the click sound
         }
         else if (Input.GetMouseButtonDown(0))
         {
