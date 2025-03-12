@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 122857929}
   - component: {fileID: 122857928}
   - component: {fileID: 122857931}
+  - component: {fileID: 122857932}
   m_Layer: 0
   m_Name: HomeButton
   m_TagString: Untagged
@@ -266,6 +267,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a167b090fe8264fa59f1b0fc3d44a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &122857932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122857927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151d3a6279ebc834295924f8acf1fc28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 1.2
 --- !u!1 &335539464
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +514,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e8047542f2fd8f44d84af50cedd870be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
