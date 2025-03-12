@@ -33,6 +33,8 @@ public class Customer : MonoBehaviour
 
     private bool isLeaving = false;
 
+    private PointSystem pointSystem;
+
     void Start()
     {
         spriteRend.sprite = custOptions[Random.Range(0, custOptions.Count)];
@@ -40,6 +42,7 @@ public class Customer : MonoBehaviour
         startY = transform.position.y;
         ChooseRandomOrder();
         orderReceipt = GameObject.Find("OrderReceipt");
+        pointSystem = FindObjectOfType<PointSystem>();
     }
 
     void ChooseRandomOrder()
@@ -156,11 +159,49 @@ public class Customer : MonoBehaviour
         Debug.Log(gameObject.name + " is ordering!");
     }
 
-    public void FinishOrder()
+    public void FinishOrder(string cupBase, string frosting, List<string> toppings)
     {
         isOrdering = false;
         DisableSpriteRenderers(orderReceipt);
+
+        int points = CalculatePoints(cupBase, frosting, toppings);
+        pointSystem.AddPoints(points);
+
         StartCoroutine(ExitAndDestroy());
+    }
+
+    public void DeductPoints(int amount)
+    {
+        pointSystem.AddPoints(-amount);
+    }
+
+    private int CalculatePoints(string cupBase, string frosting, List<string> toppings)
+    {
+        int points = 0;
+
+        if (cupBase == custCupBase) 
+            points += 10;
+        else 
+            points -= 5;
+
+        if (frosting == custFrosting) 
+            points += 10;
+        else 
+            points -= 5;
+
+        foreach (string topping in toppings)
+        {
+            if (custToppings.Contains(topping))
+            {
+                points += 5;
+            }
+            else
+            {
+                points -= 2;
+            }
+        }
+
+        return points;
     }
 
     private IEnumerator ExitAndDestroy()

@@ -1,19 +1,37 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class CustomerSpawner : MonoBehaviour
 {
     public GameObject customerPrefab;
-    public float spawnRate = 3f;
+    public float minspawnRate = 3f;
+    public float maxspawnRate = 7f;
     public List<GameObject> customers = new List<GameObject>();
     public float customerSpacing = 1.5f;
+    public float maxCustomers;
 
     public float orderingPositionX = -7.43f; // Position where customers stop to order
 
     void Start()
     {
-        InvokeRepeating(nameof(SpawnCustomer), 0f, spawnRate);
+        StartCoroutine(SpawnCustomers());
     }
+
+    IEnumerator SpawnCustomers() // <-- Remove <T> here
+    {
+        while (true)
+        {
+            float randomDelay = Random.Range(minspawnRate, maxspawnRate);
+            yield return new WaitForSeconds(randomDelay);
+
+            if (!ShouldPauseSpawning()) 
+            {
+                SpawnCustomer();
+            }
+        }
+    }
+
 
     void SpawnCustomer()
     {
@@ -42,7 +60,7 @@ public class CustomerSpawner : MonoBehaviour
 
     bool ShouldPauseSpawning()
     {
-        if (customers.Count > 7)
+        if (customers.Count > maxCustomers)
         {
             return true;
         }

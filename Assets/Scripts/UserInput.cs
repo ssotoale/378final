@@ -14,7 +14,6 @@ public class UserInput : MonoBehaviour
     public GameObject check;
     public GameObject reset;
 
-
     public Transform spawnParent;
     public string chosenCupBase = "";
     public string chosenFrosting = "";
@@ -90,10 +89,11 @@ public class UserInput : MonoBehaviour
             {
                 obj.SetActive(true);
                 Debug.Log("Spawned: " + obj.name);
+                PlayClickSound();
                 return;
             }
         }
-            Debug.LogWarning("No matching prefab found for: " + clicked);
+        Debug.LogWarning("No matching prefab found for: " + clicked);
     }
 
     void CheckOrder()
@@ -103,7 +103,7 @@ public class UserInput : MonoBehaviour
         bool areEqual = customer.custToppings.OrderBy(x => x).SequenceEqual(chosenToppings.OrderBy(x => x));
         if (customer.custCupBase == chosenCupBase && customer.custFrosting == chosenFrosting && areEqual)
         {
-            customer.FinishOrder();
+            customer.FinishOrder(chosenCupBase, chosenFrosting, chosenToppings);
         }
         else
         {
@@ -112,6 +112,10 @@ public class UserInput : MonoBehaviour
                 x.SetActive(true);
                 Invoke("TurnOff", 2f);
                 Debug.Log("You messed up!");
+
+                // Deduct points for incorrect order
+                int penaltyPoints = 10; // Adjust the penalty points as needed
+                customer.DeductPoints(penaltyPoints);
             }
         }
         ResetOrder();
