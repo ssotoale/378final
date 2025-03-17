@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bluberry frosting_0: 6132626921237339343
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
