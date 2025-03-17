@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Level1 : MonoBehaviour
+public class LevelBackButton : MonoBehaviour
 {
      // load in levels
     private void OnMouseDown()
     {
-        SceneManager.LoadScene("Gameplay"); 
+        SceneManager.LoadScene("MainScreen"); 
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
