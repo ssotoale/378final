@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Customer : MonoBehaviour
 {
@@ -19,9 +20,14 @@ public class Customer : MonoBehaviour
     public SpriteRenderer spriteRend;
     public List<Sprite> custOptions;
 
-    private string[] cupBases = { "Vanilla", "Chocolate" };
-    private string[] frostings = { "VanillaFrost", "ChocFrost" };
-    private string[] toppings = { "CherryTop", "Sprinkles", "MarshmallowsTop", "PopcornTop", "CookiesTop" };
+    public int currentLevel = 0;
+    public int cupBasesChosen = 0;
+    public int frostingsChosen = 0;
+    public int toppingsChosen = 0;
+
+    private string[] cupBases = { "Vanilla", "Chocolate", "Strawberry", "Blueberry" };
+    private string[] frostings = { "VanillaFrost", "ChocFrost", "StrawFrost", "BlueFrost" };
+    private string[] toppings = { "CherryTop", "Sprinkles", "MarshmallowsTop", "PopcornTop", "CookiesTop", "ChocDrizzTop", "LollipopTop" };
 
     public string custCupBase;
     public string custFrosting;
@@ -35,8 +41,33 @@ public class Customer : MonoBehaviour
 
     private PointSystem pointSystem;
 
+    private float waitTime = 0f; // Timer to track how long the customer has been waiting
+    public float maxWaitTime = 30f; // Maximum wait time before deducting points
+
     void Start()
     {
+        currentLevel = PlayerPrefs.GetInt("LevelPlaying", 1);
+        if (currentLevel == 1)
+        {
+            cupBasesChosen = 2;
+            frostingsChosen = 2;
+            toppingsChosen = 2;
+            maxWaitTime = 30f;
+        }
+        else if (currentLevel == 2)
+        {
+            cupBasesChosen = 3;
+            frostingsChosen = 3;
+            toppingsChosen = 5;
+            maxWaitTime = 25f;
+        }
+        else if (currentLevel == 3 || currentLevel == 4)
+        {
+            cupBasesChosen = 4;
+            frostingsChosen = 4;
+            toppingsChosen = 7;
+            maxWaitTime = 20f;
+        }
         spriteRend.sprite = custOptions[Random.Range(0, custOptions.Count)];
         isOrdering = false;
         startY = transform.position.y;
@@ -47,13 +78,13 @@ public class Customer : MonoBehaviour
 
     void ChooseRandomOrder()
     {
-        custCupBase = cupBases[Random.Range(0, cupBases.Length)];
-        custFrosting = frostings[Random.Range(0, frostings.Length)];
+        custCupBase = cupBases[Random.Range(0, cupBasesChosen)];
+        custFrosting = frostings[Random.Range(0, frostingsChosen)];
         custToppings.Clear();
 
-        int numberOfToppings = Random.Range(0, toppings.Length + 1);
+        int numberOfToppings = Random.Range(0, toppingsChosen + 1);
         Debug.Log("Number of Toppings: " + numberOfToppings);
-        List<string> shuffledToppings = new List<string>(toppings);
+        List<string> shuffledToppings = new List<string>(toppings.Take(numberOfToppings));
         for (int i = 0; i < numberOfToppings; i++)
         {
             int index = Random.Range(0, shuffledToppings.Count);
@@ -104,6 +135,13 @@ public class Customer : MonoBehaviour
             else
             {
                 hasStopped = true; // Customer is now waiting
+                waitTime += Time.deltaTime; // Increment the wait time
+
+                if (waitTime >= maxWaitTime)
+                {
+                    DeductPoints(5); // Deduct points for waiting too long
+                    waitTime = 0f; // Reset the wait time
+                }
             }
         }
 
