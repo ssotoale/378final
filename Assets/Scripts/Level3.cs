@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartButton : MonoBehaviour
+public class Level3 : MonoBehaviour
 {
-
-    // load in levels
+     // load in levels
     private void OnMouseDown()
     {
-        SceneManager.LoadScene("LevelMenu"); 
+        SceneManager.LoadScene("Level3"); 
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

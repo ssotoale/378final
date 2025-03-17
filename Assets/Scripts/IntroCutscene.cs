@@ -6,7 +6,7 @@ public class IntroCutscene : MonoBehaviour
     // testing
     void OnEnable()
     {
-        SceneManager.LoadScene("Gameplay", LoadSceneMode.Single);
+        SceneManager.LoadScene("MainScreen", LoadSceneMode.Single);
     }
 
 }
