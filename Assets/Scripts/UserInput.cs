@@ -23,6 +23,8 @@ public class UserInput : MonoBehaviour
     // Audio when on click
     public AudioSource audioSource; // Drag and drop the audio source in the inspector
     public AudioClip clickSound; // Drag and drop the click sound in the inspector
+    public AudioClip booSound; // Drag and drop the boo sound in the inspector
+    public AudioClip yaySound; // Drag and drop the yay sound it he inspector
 
     void Start()
     {
@@ -73,7 +75,7 @@ public class UserInput : MonoBehaviour
                 }
             }
 
-            PlayClickSound(); // Play the click sound
+            PlaySound(clickSound); // Play the click sound
         }
         else if (Input.GetMouseButtonDown(0))
         {
@@ -89,7 +91,7 @@ public class UserInput : MonoBehaviour
             {
                 obj.SetActive(true);
                 Debug.Log("Spawned: " + obj.name);
-                PlayClickSound();
+                PlaySound(clickSound);
                 return;
             }
         }
@@ -104,6 +106,7 @@ public class UserInput : MonoBehaviour
         if (customer.custCupBase == chosenCupBase && customer.custFrosting == chosenFrosting && areEqual)
         {
             customer.FinishOrder(chosenCupBase, chosenFrosting, chosenToppings);
+            PlaySound(yaySound);
         }
         else
         {
@@ -116,6 +119,7 @@ public class UserInput : MonoBehaviour
                 // Deduct points for incorrect order
                 int penaltyPoints = 10; // Adjust the penalty points as needed
                 customer.DeductPoints(penaltyPoints);
+                PlaySound(booSound);
             }
         }
         ResetOrder();
@@ -151,12 +155,12 @@ public class UserInput : MonoBehaviour
         }
         return "";
     }
-
-    void PlayClickSound() // Add this method
+    void PlaySound(AudioClip sound)
     {
-        if (audioSource != null && clickSound != null)
+        if (audioSource != null && sound != null)
         {
-            audioSource.PlayOneShot(clickSound);
+            audioSource.PlayOneShot(sound);
         }
     }
+
 }
