@@ -35,6 +35,9 @@ public class Customer : MonoBehaviour
 
     private PointSystem pointSystem;
 
+    private float waitTime = 0f; // Timer to track how long the customer has been waiting
+    private const float maxWaitTime = 30f; // Maximum wait time before deducting points
+
     void Start()
     {
         spriteRend.sprite = custOptions[Random.Range(0, custOptions.Count)];
@@ -104,6 +107,13 @@ public class Customer : MonoBehaviour
             else
             {
                 hasStopped = true; // Customer is now waiting
+                waitTime += Time.deltaTime; // Increment the wait time
+
+                if (waitTime >= maxWaitTime)
+                {
+                    DeductPoints(5); // Deduct points for waiting too long
+                    waitTime = 0f; // Reset the wait time
+                }
             }
         }
 

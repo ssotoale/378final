@@ -1372,6 +1372,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 0
   pointsText: {fileID: 603919830}
+  failThreshold: -50
+  failMessage: {fileID: 0}
 --- !u!114 &603919830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1392,10 +1394,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Points : 0'
+  m_text: 'Dollars : 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 32068b445b15a864a9f2c9043d38c911, type: 2}
+  m_sharedMaterial: {fileID: 1915857151427533707, guid: 32068b445b15a864a9f2c9043d38c911, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4498,6 +4500,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 0
   pointsText: {fileID: 0}
+  failThreshold: -50
+  failMessage: {fileID: 0}
 --- !u!4 &1535145568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4093353904128972705, guid: 519422df3604779459a4d8cf486bed8f, type: 3}
