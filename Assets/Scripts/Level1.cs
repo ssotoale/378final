@@ -6,6 +6,7 @@ public class Level1 : MonoBehaviour
      // load in levels
     private void OnMouseDown()
     {
+        PlayerPrefs.SetInt("LevelPlaying", 1);
         SceneManager.LoadScene("Gameplay"); 
     }
 

@@ -6,7 +6,8 @@ public class Level3 : MonoBehaviour
      // load in levels
     private void OnMouseDown()
     {
-        SceneManager.LoadScene("Level3"); 
+        PlayerPrefs.SetInt("LevelPlaying", 3);
+        SceneManager.LoadScene("Gameplay"); 
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

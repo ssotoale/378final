@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2864342440962223611, guid: 89ba490ad016c31428ad941e21834701, type: 3}
+  m_Sprite: {fileID: -2174123482346803881, guid: 812081c608f00ab43be7ed5b2df6c67c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,6 +123,16 @@ MonoBehaviour:
   - {fileID: 2864342440962223611, guid: 89ba490ad016c31428ad941e21834701, type: 3}
   - {fileID: 608960244248822192, guid: f374df2f92090a14cb249038b8e3ebf9, type: 3}
   - {fileID: 3597786878038017252, guid: 14c45743bbb51e342b53a735f6810d36, type: 3}
+  - {fileID: 6558712130247537738, guid: c9cc4d4ae3b4f424a8af5f5d33b9ca6f, type: 3}
+  - {fileID: -2494822883069619662, guid: edae763caafd79c4289c536b463131ef, type: 3}
+  - {fileID: -554171559881049924, guid: 25ffa4b2a40ea7e43a8f45ac830a30c5, type: 3}
+  - {fileID: -2174123482346803881, guid: 812081c608f00ab43be7ed5b2df6c67c, type: 3}
+  - {fileID: 4278139663319483419, guid: 453cf0c6042e6f24986a57c35daec60d, type: 3}
+  - {fileID: -4277733509050799731, guid: e1da7d78ed60ed044abdd259b4392b99, type: 3}
+  currentLevel: 0
+  cupBasesChosen: 0
+  frostingsChosen: 0
+  toppingsChosen: 0
   custCupBase: 
   custFrosting: 
   custToppings: []

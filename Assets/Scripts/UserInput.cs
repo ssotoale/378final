@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class UserInput : MonoBehaviour
 {
@@ -25,7 +26,14 @@ public class UserInput : MonoBehaviour
     public AudioClip clickSound; 
     public AudioClip booSound;
     public AudioClip yaySound;
+    public AudioClip dingSound;
 
+    public bool checkTime = false;
+    public GameObject nextLevelScene;
+    public GameObject lostLevelScene;
+    public GameObject pauseScene;
+
+    public PointSystem pointsCurrent;
 
     void Start()
     {
@@ -37,46 +45,107 @@ public class UserInput : MonoBehaviour
 
     void Update()
     {
-        if (canClick && Input.GetMouseButtonDown(0))
-        {
-            string clickedObject = DetectClick();
-            if (clickedObject == "Check")
+        if (nextLevelScene.activeInHierarchy || lostLevelScene.activeInHierarchy)
             {
-                CheckOrder();
-            }
-            if (clickedObject == "Reset")
-            {
-                ResetOrder();
-            }
-            //Cup Bases
-            if (clickedObject == "Vanilla" || clickedObject == "Chocolate" || clickedObject == "Strawberry" || clickedObject == "Blueberry")
-            {
-                if (chosenCupBase == "")
+                if (!checkTime)
                 {
-                    chosenCupBase = clickedObject;
-                    SpawnCupcakeItem(clickedObject, cupBases);
-                }
-            }
-            Debug.Log("Clicked Object is: " + clickedObject);
-            // Toppings
-            if (clickedObject == "CherryTop" || clickedObject == "Sprinkles" || clickedObject == "CookiesTop" || clickedObject == "MarshmallowsTop" || clickedObject == "PopcornTop" || clickedObject == "ChocDrizzTop" || clickedObject == "LollipopTop")
-            {
-                if (!chosenToppings.Contains(clickedObject))
-                {
-                    chosenToppings.Add(clickedObject);
-                    SpawnCupcakeItem(clickedObject, toppings);
-                }
-            }
-            if (clickedObject == "VanillaFrost" || clickedObject == "ChocFrost" || clickedObject == "StrawFrost" || clickedObject == "BlueFrost")
-            {
-                if (chosenFrosting == "")
-                {
-                    chosenFrosting = clickedObject;
-                    SpawnCupcakeItem(clickedObject, frostings);
+                    PlaySound(dingSound);
+                    checkTime = true;
+                
                 }
             }
 
-            PlaySound(clickSound); // Play the click sound
+        if (canClick && Input.GetMouseButtonDown(0))
+        {
+
+            string clickedObject = DetectClick();
+            if (pauseScene.activeInHierarchy)
+            {
+                if (clickedObject == "MainMenu")
+                {
+                    if (PlayerPrefs.GetInt("LevelPlaying", 1) == 4)
+                    {
+                        if (pointsCurrent.points > PlayerPrefs.GetInt("Level4HS", 0))
+                        {
+                            PlayerPrefs.SetInt("Level4HS", pointsCurrent.points);
+                        }
+                    }
+                    SceneManager.LoadScene("MainScreen");
+                }
+                if (clickedObject == "RetryButton")
+                {
+                    if (PlayerPrefs.GetInt("LevelPlaying", 1) == 4)
+                    {
+                        if (pointsCurrent.points > PlayerPrefs.GetInt("Level4HS", 0))
+                        {
+                            PlayerPrefs.SetInt("Level4HS", pointsCurrent.points);
+                        }
+                    }
+                    SceneManager.LoadScene("Gameplay");
+                }
+                if (clickedObject == "X")
+                {
+                    spawner.TogglePause();
+                }
+            }
+            if (nextLevelScene.activeInHierarchy || lostLevelScene.activeInHierarchy)
+            {
+                if (clickedObject == "NextLevelButton")
+                {
+                    SceneManager.LoadScene("LevelMenu");
+                }
+                if (clickedObject == "RetryLevelButton")
+                {
+                    SceneManager.LoadScene("Gameplay");
+                }
+                if (clickedObject == "MainMenuButton")
+                {
+                    SceneManager.LoadScene("MainScreen");
+                }
+            }
+            else
+            {
+                if (clickedObject == "Check")
+                {
+                    CheckOrder();
+                }
+                if (clickedObject == "Reset")
+                {
+                    ResetOrder();
+                }
+                //Cup Bases
+                if (clickedObject == "Vanilla" || clickedObject == "Chocolate" || clickedObject == "Strawberry" || clickedObject == "Blueberry")
+                {
+                    if (chosenCupBase == "")
+                    {
+                        chosenCupBase = clickedObject;
+                        SpawnCupcakeItem(clickedObject, cupBases);
+                    }
+                }
+                Debug.Log("Clicked Object is: " + clickedObject);
+                // Toppings
+                if (chosenCupBase != "" && chosenFrosting != "")
+                {
+                    if (clickedObject == "CherryTop" || clickedObject == "Sprinkles" || clickedObject == "CookiesTop" || clickedObject == "MarshmallowsTop" || clickedObject == "PopcornTop" || clickedObject == "ChocDrizzTop" || clickedObject == "LollipopTop")
+                    {
+                        if (!chosenToppings.Contains(clickedObject))
+                        {
+                            chosenToppings.Add(clickedObject);
+                            SpawnCupcakeItem(clickedObject, toppings);
+                        }
+                    }
+                }
+                if (clickedObject == "VanillaFrost" || clickedObject == "ChocFrost" || clickedObject == "StrawFrost" || clickedObject == "BlueFrost")
+                {
+                    if (chosenFrosting == "" && chosenCupBase != "")
+                    {
+                        chosenFrosting = clickedObject;
+                        SpawnCupcakeItem(clickedObject, frostings);
+                    }
+                }
+
+                PlaySound(clickSound); // Play the click sound
+            }
         }
         else if (Input.GetMouseButtonDown(0))
         {

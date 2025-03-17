@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Level2 : MonoBehaviour
+public class Level4 : MonoBehaviour
 {
      // load in levels
     private void OnMouseDown()
     {
-        PlayerPrefs.SetInt("LevelPlaying", 2);
+        PlayerPrefs.SetInt("LevelPlaying", 4);
         SceneManager.LoadScene("Gameplay"); 
     }
 
