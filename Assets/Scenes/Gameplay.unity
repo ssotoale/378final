@@ -4769,6 +4769,8 @@ MonoBehaviour:
   x: {fileID: 1931042111}
   audioSource: {fileID: 1661291609}
   clickSound: {fileID: 8300000, guid: 37635a792eb200d42a33ed89483417a8, type: 3}
+  booSound: {fileID: 8300000, guid: e12a95bed6febf54ab0b744a4c1958f0, type: 3}
+  yaySound: {fileID: 8300000, guid: 65483d80944b3e04d80921b52c555701, type: 3}
 --- !u!82 &1661291609
 AudioSource:
   m_ObjectHideFlags: 0
