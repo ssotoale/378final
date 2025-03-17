@@ -2166,6 +2166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 930219876}
   - component: {fileID: 930219875}
+  - component: {fileID: 930219877}
   m_Layer: 0
   m_Name: BluberryFrost
   m_TagString: Untagged
@@ -2243,6 +2244,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1787204069}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -51.518}
+--- !u!61 &930219877
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930219874}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 12.55}
+    newSize: {x: 4, y: 12.55}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4, y: 12.55}
+  m_EdgeRadius: 0
 --- !u!4 &999881897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2707545873251272021, guid: 48da8b81880741949bbe4691e650a445, type: 3}
@@ -3497,6 +3544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1376174942}
   - component: {fileID: 1376174941}
+  - component: {fileID: 1376174943}
   m_Layer: 0
   m_Name: StrawberryFrost
   m_TagString: Untagged
@@ -3574,6 +3622,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1787204069}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -51.558}
+--- !u!61 &1376174943
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376174940}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 12.55}
+    newSize: {x: 4, y: 12.55}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4, y: 12.55}
+  m_EdgeRadius: 0
 --- !u!4 &1379971952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4093353904128972705, guid: e0d4c1add593d124cac079c3ce583495, type: 3}
@@ -3592,7 +3686,7 @@ GameObject:
   - component: {fileID: 1384620549}
   - component: {fileID: 1384620550}
   m_Layer: 0
-  m_Name: Chocolate Bowl
+  m_Name: Chocolate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3995,8 +4089,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1490581609}
   - component: {fileID: 1490581610}
+  - component: {fileID: 1490581611}
   m_Layer: 0
-  m_Name: Bluberry Bowl
+  m_Name: Blueberry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4072,6 +4167,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1490581611
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490581608}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.5753009, y: -1.6875474}
+  m_Radius: 5.1690984
 --- !u!1 &1515683430
 GameObject:
   m_ObjectHideFlags: 0
@@ -4809,8 +4940,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1838826705}
   - component: {fileID: 1838826704}
+  - component: {fileID: 1838826706}
   m_Layer: 0
-  m_Name: Strawberry Bowl
+  m_Name: Strawberry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4886,6 +5018,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1770415979}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1838826706
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838826703}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.45301196, y: -1.6610248}
+  m_Radius: 5.3094764
 --- !u!1 &1876880953
 GameObject:
   m_ObjectHideFlags: 0
@@ -5273,7 +5441,7 @@ GameObject:
   - component: {fileID: 1997553821}
   - component: {fileID: 1997553822}
   m_Layer: 0
-  m_Name: Vanilla Bowl
+  m_Name: Vanilla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

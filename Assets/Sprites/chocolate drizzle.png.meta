@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chocolate drizzle_0: 236254131391730389
+      chocolate drizzle_1: 4188594866683869993
+      chocolate drizzle_2: 4844111099020755223
+      chocolate drizzle_3: 1119380768170639511
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
