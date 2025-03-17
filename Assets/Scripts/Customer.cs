@@ -19,9 +19,9 @@ public class Customer : MonoBehaviour
     public SpriteRenderer spriteRend;
     public List<Sprite> custOptions;
 
-    private string[] cupBases = { "Vanilla", "Chocolate" };
-    private string[] frostings = { "VanillaFrost", "ChocFrost" };
-    private string[] toppings = { "CherryTop", "Sprinkles", "MarshmallowsTop", "PopcornTop", "CookiesTop" };
+    private string[] cupBases = { "Vanilla", "Chocolate", "Strawberry", "Blueberry" };
+    private string[] frostings = { "VanillaFrost", "ChocFrost", "StrawFrost", "BlueFrost" };
+    private string[] toppings = { "CherryTop", "Sprinkles", "MarshmallowsTop", "PopcornTop", "CookiesTop", "ChocDrizzTop", "LollipopTop" };
 
     public string custCupBase;
     public string custFrosting;

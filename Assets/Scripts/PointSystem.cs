@@ -28,7 +28,7 @@ public class PointSystem : MonoBehaviour
     void UpdatePointsText()
     {
         if (pointsText != null)
-            pointsText.text = "Points: " + points.ToString();
+            pointsText.text = "Dollars: " + points.ToString();
         else
             Debug.LogError("PointsText is not assigned in the Inspector!");
     }

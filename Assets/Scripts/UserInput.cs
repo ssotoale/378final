@@ -21,8 +21,11 @@ public class UserInput : MonoBehaviour
     public GameObject x;
 
     // Audio when on click
-    public AudioSource audioSource; // Drag and drop the audio source in the inspector
-    public AudioClip clickSound; // Drag and drop the click sound in the inspector
+    public AudioSource audioSource; 
+    public AudioClip clickSound; 
+    public AudioClip booSound;
+    public AudioClip yaySound;
+
 
     void Start()
     {
@@ -46,7 +49,7 @@ public class UserInput : MonoBehaviour
                 ResetOrder();
             }
             //Cup Bases
-            if (clickedObject == "Vanilla" || clickedObject == "Chocolate" || clickedObject == "Strawberry")
+            if (clickedObject == "Vanilla" || clickedObject == "Chocolate" || clickedObject == "Strawberry" || clickedObject == "Blueberry")
             {
                 if (chosenCupBase == "")
                 {
@@ -56,7 +59,7 @@ public class UserInput : MonoBehaviour
             }
             Debug.Log("Clicked Object is: " + clickedObject);
             // Toppings
-            if (clickedObject == "CherryTop" || clickedObject == "Sprinkles" || clickedObject == "CookiesTop" || clickedObject == "MarshmallowsTop" || clickedObject == "PopcornTop")
+            if (clickedObject == "CherryTop" || clickedObject == "Sprinkles" || clickedObject == "CookiesTop" || clickedObject == "MarshmallowsTop" || clickedObject == "PopcornTop" || clickedObject == "ChocDrizzTop" || clickedObject == "LollipopTop")
             {
                 if (!chosenToppings.Contains(clickedObject))
                 {
@@ -64,7 +67,7 @@ public class UserInput : MonoBehaviour
                     SpawnCupcakeItem(clickedObject, toppings);
                 }
             }
-            if (clickedObject == "VanillaFrost" || clickedObject == "ChocFrost")
+            if (clickedObject == "VanillaFrost" || clickedObject == "ChocFrost" || clickedObject == "StrawFrost" || clickedObject == "BlueFrost")
             {
                 if (chosenFrosting == "")
                 {
@@ -73,7 +76,7 @@ public class UserInput : MonoBehaviour
                 }
             }
 
-            PlayClickSound(); // Play the click sound
+            PlaySound(clickSound); // Play the click sound
         }
         else if (Input.GetMouseButtonDown(0))
         {
@@ -89,7 +92,7 @@ public class UserInput : MonoBehaviour
             {
                 obj.SetActive(true);
                 Debug.Log("Spawned: " + obj.name);
-                PlayClickSound();
+                PlaySound(clickSound);
                 return;
             }
         }
@@ -104,6 +107,7 @@ public class UserInput : MonoBehaviour
         if (customer.custCupBase == chosenCupBase && customer.custFrosting == chosenFrosting && areEqual)
         {
             customer.FinishOrder(chosenCupBase, chosenFrosting, chosenToppings);
+            PlaySound(yaySound);
         }
         else
         {
@@ -116,6 +120,7 @@ public class UserInput : MonoBehaviour
                 // Deduct points for incorrect order
                 int penaltyPoints = 10; // Adjust the penalty points as needed
                 customer.DeductPoints(penaltyPoints);
+                PlaySound(booSound);
             }
         }
         ResetOrder();
@@ -152,11 +157,11 @@ public class UserInput : MonoBehaviour
         return "";
     }
 
-    void PlayClickSound() // Add this method
+    void PlaySound(AudioClip sound)
     {
-        if (audioSource != null && clickSound != null)
+        if (audioSource != null && sound != null)
         {
-            audioSource.PlayOneShot(clickSound);
+            audioSource.PlayOneShot(sound);
         }
     }
 }
