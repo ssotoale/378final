@@ -43,16 +43,20 @@ public class PointSystem : MonoBehaviour
 
     void TriggerLevelFail()
     {
+        /*
         Debug.Log("Level Failed!");
         if (failMessage != null)
         {
             failMessage.SetActive(true); // Show the fail message
         }
         Invoke("ResetLevel", 2f); // Wait for 2 seconds before resetting the level
+        */
     }
 
     void ResetLevel()
     {
+        /*
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload the current scene
+        */
     }
 }

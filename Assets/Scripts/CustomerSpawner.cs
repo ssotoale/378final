@@ -220,18 +220,26 @@ public class CustomerSpawner : MonoBehaviour
         AudioSource audioTime = audioTimer.GetComponent<AudioSource>();
         audioTime.PlayOneShot(dingSound);
         audioTimer.SetActive(false);
-        nextLevelScene.SetActive(true);
-        string levelname = "Level" + currentLevel + "HS";
-        Debug.Log(levelname);
-        if (PlayerPrefs.GetInt(levelname, 0) < pointsText.points)
+
+        if (pointsText.points < 0)
         {
-            PlayerPrefs.SetInt(levelname, pointsText.points);
+            lostLevelScene.SetActive(true);
         }
-        int nextLevel = PlayerPrefs.GetInt("LevelUnlocked", 1);
-        Debug.Log("LevelUnlocked" + nextLevel);
-        if (nextLevel <= currentLevel + 1 && currentLevel + 1 != 5)
+        else
         {
-            PlayerPrefs.SetInt("LevelUnlocked", currentLevel + 1);
+            nextLevelScene.SetActive(true);
+            string levelname = "Level" + currentLevel + "HS";
+            Debug.Log(levelname);
+            if (PlayerPrefs.GetInt(levelname, 0) < pointsText.points)
+            {
+                PlayerPrefs.SetInt(levelname, pointsText.points);
+            }
+            int nextLevel = PlayerPrefs.GetInt("LevelUnlocked", 1);
+            Debug.Log("LevelUnlocked" + nextLevel);
+            if (nextLevel <= currentLevel + 1 && currentLevel + 1 != 5)
+            {
+                PlayerPrefs.SetInt("LevelUnlocked", currentLevel + 1);
+            }
         }
     }
 
